@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.50q" provider-name="spoyser, modded by [COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.metahandler" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video audio executable image</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Put all your favourites bits of all your favourites addons into one easy to use addon.</summary>
+		<description lang="en">Super Favourites is a better way of managing your Kodi Favourites.[CR][CR]Virtually any menu item within Kodi can be added to Super Favourites, even from addons that don't normally provide this feature.[CR][CR]Super Favourites allows you to better manage your Kodi favourites, including the creation of sub-folders, into which your Kodi favourites can then be copied or moved into.[CR][CR]This allows you to create you own custom addon with just the best bits of your favourite addons. Search your favourite addons, play your favourite music, read your favourite comic strips, select your favourite playlists, browse your favourite movies, listen to your favourite radio stations, watch your favourite cartoons, the possibilities are endless, all from within one easy to use addon.</description>
+		<platform>all</platform>
+		<language>en</language>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum>http://forum.xbmc.org/showthread.php?tid=192662</forum>
+		<website></website>
+		<source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
+		<email>seanpoyser at gmail.com</email>
+	</extension>
+	<extension point="kodi.context.item" library="capture.py">
+		<item>
+			<label>30002</label>
+			<visible>!IsEmpty(Window(10000).Property(SF_STD_CONTEXTMENU_ENABLED))</visible>
+		</item>
+	</extension>
+</addon>
+
+<addon id="plugin.video.meta" name="Meta" version="1.1.0-dev-c" provider-name="MetaTeam">
+  <requires>
+    <import addon="xbmc.python" version="2.20.0"/>
+    <import addon="script.module.requests"/>
+    <import addon="script.module.futures" version="2.2.0"/>
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+
+  <extension point="xbmc.service" library="service.py" start="[login|startup]">
+  </extension>
+
+  <extension point="kodi.context.item" library="context_playable.py">
+    <provides>executable</provides>
+      <item>
+        <label>$ADDON[plugin.video.meta 31002]</label>
+        <visible>!System.HasAddon(context.meta) + [StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode)] + SubString(ListItem.FileNameAndPath, plugin.video.meta)</visible>
+      </item>
+  </extension>
+
+  <extension point="kodi.context.item" library="context_tvshow.py">
+    <provides>executable</provides>
+      <item>
+        <label>$ADDON[plugin.video.meta 31022]</label>
+        <visible>StringCompare(ListItem.dbtype,tvshow) + SubString(ListItem.Path, plugin.video.meta)</visible>
+      </item>
+  </extension>
+
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language></language>
+    <summary>TMDB and TVDB media listing</summary>
+    <description>Browse TMDB and TVDB media</description>
+    <supportedcontent>
+      <content>movies</content>
+      <content>tvshows</content>
+      <content>episodes</content>
+    </supportedcontent>
+  </extension>
+</addon>
+
+<addon id="repository.eqsperimental"
+		name="[COLOR FF8ABEE2]Q[/COLOR]'s Eqsperimental Repository"
+		version="0.0.2"
+		provider-name="[COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR]">
+	<extension point="xbmc.addon.repository"
+		name="[COLOR FF8ABEE2]Q[/COLOR]'s Eqsperimental Add-on Repository">
+		<dir minversion="14.0.0">
+			<info compressed="false">https://github.com/OpenELEQ/repository.eqsperimental/raw/master/openeleq-addons.xml</info>
+			<checksum>https://github.com/OpenELEQ/repository.eqsperimental/raw/master/openeleq-addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/OpenELEQ/repository.eqsperimental/master/zips/</datadir>
+		</dir>
+		<dir minversion="16.0.0">
+			<info compressed="false">https://github.com/OpenELEQ/repository.eqsperimental.jarvis/raw/master/openeleq-addons.xml</info>
+			<checksum>https://github.com/OpenELEQ/repository.eqsperimental.jarvis/raw/master/openeleq-addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.github.com/OpenELEQ/repository.eqsperimental.jarvis/master/zips/</datadir>
+		</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">[COLOR FF8ABEE2]Q[/COLOR]'s Eqsperimental Add-on Repository</summary>
+		<summary lang="nl">[COLOR FF8ABEE2]Q[/COLOR]'s Eqsperimentele Addon Depot</summary>
+		<description lang="en">DO NOT INSTALL!!! This is my personal testing repository. I can and will do whatever I want with it. Most stuff in here can and will overwrite allready installed addons or possibly even bork your setup entirely.</description>
+		<description lang="nl">NIET INSTALLEREN!!! Dit is mijn persoonlijke test depot. Ik kan hiermee doen en laten wat ik wil. De meeste dingen in dit depot kunnen en zullen reeds geinstalleerde addons overschrijven en mogelijk zelfs je hele setup verknallen.</description>
+		<disclaimer lang="en">[COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR] did not make all the add-ons in this repository and is in no way responsible for their content.</disclaimer>
+		<disclaimer lang="nl">[COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR] heeft niet alle add-ons in dit depot gemaakt en is ook op geen enkele manier verantwoordelijk voor hun inhoud.</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.extendedinfo" name="ExtendedInfo Script Mod" version="4.7.4-dev-a" provider-name="Original work by phil65, modded by [COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.pil" version="1.1.7"/>
+		<import addon="script.module.requests" version="1.1.0"/>
+		<import addon="script.module.simplejson" version="2.0.10"/>
+		<import addon="script.module.urlresolver" version="1.0.0"/>
+		<import addon="script.module.youtube.dl" version="14.519.1"/>
+		<import addon="plugin.program.super.favourites" version="1.0.49.1" />
+	</requires>
+	<extension point="xbmc.python.script"           library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.python.library"          library="default.py" />
+	<extension point="xbmc.python.pluginsource"     library="plugin.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item"            library="addon.py">
+		<provides>executable</provides>
+			<item>
+				<label>Alternate Play</label>
+				<visible>StringCompare(ListItem.FileExtension,strm) + [StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode)]</visible>
+			</item>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<language/>
+		<summary lang="en">ExtendedInfo Script Mod</summary>
+		<description lang="en">This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Used services are themoviedb.org, theaudiodb.org, rottentomatoes.com, Trakt.TV, omdbapi.com and a lot more. Needs skin implementation for lot of functions.</description>
+		<summary lang="nl">ExtendedInfo Script Mod</summary>
+		<description lang="nl">Dit script biedt meerdere mogelijkheded om online content weer te geven in skins en bevat ook een complete MovieDB browser inclusief info dialogen voor verscheidene media types. Gebruikte diensten zijn themoviedb.org, theaudiodb.org, rottentomatoes.com, Trakt.TV, omdbapi.com en nog veel meer. Vereist skin implementatie voor de meeste functies.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>http://www.noobsandnerds.com/forums/index.php?topic=7393.0</forum>
+		<source>https://github.com/OpenELEQ/repository.q/tree/master/zips/script.extendedinfo</source>
+		<email>OpenELEQ@gmail.com</email>
+	</extension>
+</addon>
+
+<addon
+    id="skin.eminenze"
+    version="16.0.1"
+    name="Eminenze"
+    provider-name="jurialmunkey, modded by [COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR]">
+    <requires>
+        <import addon="xbmc.gui" version="5.10.0"/>
+        <import addon="script.skinshortcuts" version="0.6.0"/>
+        <import addon="script.skin.helper.service" version="0.0.1"/>
+        <import addon="script.extendedinfo" version="3.0.0"/>
+        <import addon="script.image.resource.select" version="0.0.5" />
+        <import addon="plugin.program.autocompletion" version="1.0.1" />
+    </requires>
+    <extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="1.00" debugging="false">
+        <res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" />
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Clean, clear, simple, modern.</summary>
+        <disclaimer lang="en">Mouse and Touch device not supported</disclaimer>
+        <description lang="en">Eminence is a skin that aims to be clean, clear, simple and modern.</description>
+    </extension>
+</addon>
+</addons>

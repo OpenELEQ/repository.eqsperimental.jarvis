@@ -1,0 +1,4 @@
+[B]16.0.1[/B]
+[COLOR FF8ABEE2]Open[/COLOR][COLOR FF757677]ELEQ[/COLOR]
+Forked & rebranded to "Eminenze"
+Based on Eminence v2.0.4
